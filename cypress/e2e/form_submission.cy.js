@@ -8,6 +8,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   }
   return true; // Let other exceptions fail the test
 });
+// TODO: Remove Cypress.on('uncaught:exception') once the issue is fixed. Will need to investigate if this is a Cypress issue or a React issue.
+
+// TODO: May remove or reduce timeouts once the issues are fixed.
 
 describe('Reseller Registration Form', () => {
   beforeEach(() => {
@@ -57,6 +60,7 @@ describe('Reseller Registration Form', () => {
       .as('inquiry');
     cy.get('@inquiry').select('I want to become a manufacturer rep.');
 
+    // TODO: This is not in dev at the moment. Local to my branch for Netsuite.
     // Wait for account managers with longer timeout
     // cy.get('#accountManager', { timeout: 10000 })
     //   .should('be.visible')
