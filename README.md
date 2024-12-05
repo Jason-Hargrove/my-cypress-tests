@@ -1,13 +1,14 @@
-Run Cypress with the following command:
+### Run Cypress with the following command:
 
-bash
-Copy code
+```zsh
 npx cypress open
+```
 
-Headless Testing (Optional)
+### Headless Testing (Optional)
+This will execute all tests in the cypress/e2e folder.
+
 To run tests in headless mode (no browser GUI), use:
 
-bash
-Copy code
+```zsh
 npx cypress run
-This will execute all tests in the cypress/e2e folder.
+```
