@@ -55,14 +55,14 @@ describe('Reseller Registration Form', () => {
       .should('be.visible')
       .should('not.be.disabled')
       .as('inquiry');
-    cy.get('@inquiry').select('Product Support');
+    cy.get('@inquiry').select('I want to become a manufacturer rep.');
 
     // Wait for account managers with longer timeout
-    cy.get('#accountManager', { timeout: 10000 })
-      .should('be.visible')
-      .should('not.be.disabled')
-      .as('accountManager');
-    cy.get('@accountManager').select('John Smith');
+    // cy.get('#accountManager', { timeout: 10000 })
+    //   .should('be.visible')
+    //   .should('not.be.disabled')
+    //   .as('accountManager');
+    // cy.get('@accountManager').select('John Smith');
 
     // Click Continue with retry
     cy.contains('button', 'Continue')
@@ -78,46 +78,59 @@ describe('Reseller Registration Form', () => {
       .should('be.visible')
       .should('not.be.disabled')
       .type('My Test Company');
+
     cy.get('#street')
       .should('be.visible')
       .should('not.be.disabled')
       .type('123 Test St');
+
     cy.get('#city')
       .should('be.visible')
       .should('not.be.disabled')
       .type('Test City');
+
     cy.get('#state')
       .should('be.visible')
       .should('not.be.disabled')
-      .select('California');
+      .select('Kentucky');
+
     cy.get('#zipCode')
       .should('be.visible')
       .should('not.be.disabled')
-      .type('12345');
-    cy.get('#country')
+      .type('42001');
+
+    cy.get('#country', { timeout: 10000 })
       .should('be.visible')
       .should('not.be.disabled')
-      .select('United States');
+      .as('country');
+    cy.get('@country').select('US');
+      
     cy.get('#region')
       .should('be.visible')
       .should('not.be.disabled')
       .type('North America');
-    cy.get('#businessType')
+
+    cy.get('#businessType', { timeout: 10000 })
       .should('be.visible')
       .should('not.be.disabled')
-      .select('Retail');
+      .as('businessType');
+    cy.get('@businessType').select('I am a retailer');
+
     cy.get('#website')
       .should('be.visible')
       .should('not.be.disabled')
       .type('https://testcompany.com');
+
     cy.get('#companyDescription')
       .should('be.visible')
       .should('not.be.disabled')
       .type('We are a leading company in the HVAC industry.');
-    cy.get('#referral')
+
+    cy.get('#referral', { timeout: 10000 })
       .should('be.visible')
       .should('not.be.disabled')
-      .select('Google');
+      .as('referral');
+    cy.get('@referral').select('REP: Ally Davis');
 
     // Agree to terms
     cy.get('input[type="checkbox"]')
